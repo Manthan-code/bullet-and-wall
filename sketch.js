@@ -26,27 +26,33 @@ function draw() {
 
  damage =(0.5*weight*speed1*speed1)/(thickness*thickness*thickness)  ;
 
- if(wall.x- bullet.x<wall.width/2+bullet.width/2
-  ){
-   
-   bullet.velocityX = 0;
+passarguments(); 
 
-   if(damage>10){
-    bullet.shapeColor="red";
-  }    
-  if(damage<10){
-    bullet.shapeColor="green";
-  }
-
-  
-}
-
-  drawSprites();
+  drawSprites(wall,bullet );
 
   text("Speed:="+Math.round(speed1),1000,20);
   text("Weight="+Math.round(weight),1000,50);
   text("damage="+Math.round(damage),1000,80);
 
+
+}
+
+function passarguments(wall,bullet){
+
+  if(wall.x- bullet.x<wall.width/2+bullet.width/2
+    ){
+     
+     bullet.velocityX = 0;
+  
+     if(damage>10){
+      bullet.shapeColor="red";
+    }    
+    if(damage<10){
+      bullet.shapeColor="green";
+    }
+  
+    
+  }
 
 }
 
