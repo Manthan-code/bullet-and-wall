@@ -24,7 +24,7 @@ function setup() {
 function draw() {
   background("yellow"); 
 
- damage =0.5*weight*speed1*speed1/(thickness*thickness*thickness)  ;
+ damage =(0.5*weight*speed1*speed1)/(thickness*thickness*thickness)  ;
 
  if(wall.x- bullet.x<wall.width/2+bullet.width/2
   ){
