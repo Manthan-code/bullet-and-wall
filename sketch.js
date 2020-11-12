@@ -13,12 +13,9 @@ function setup() {
   bullet.shapeColor="white";
   bullet.velocityX = speed1;
 
-  wall=createSprite(1200,200,thickness,height/2);
+  wall=createSprite(1200,200,thickness,200);
   
   wall.shapeColor=rgb(80,80,80);
-
-  
- 
 }
 
 function draw() {
@@ -26,9 +23,23 @@ function draw() {
 
  damage =(0.5*weight*speed1*speed1)/(thickness*thickness*thickness)  ;
 
-passarguments(); 
+if(collided(wall,bullet)){
+  bullet.velocityX = 0;
 
-  drawSprites(wall,bullet );
+  if(damage>10){
+    wall.shapeColor=color(255,0,0);
+  }
+
+  if(damage<=10){
+    wall.shapeColor=color(0,255,0);
+  }
+
+} 
+else{
+  wall.shapeColor=rgb(80,80,80);
+}
+
+  drawSprites() ;
 
   text("Speed:="+Math.round(speed1),1000,20);
   text("Weight="+Math.round(weight),1000,50);
@@ -37,23 +48,15 @@ passarguments();
 
 }
 
-function passarguments(wall,bullet){
+function collided(object1,object2){
 
-  if(wall.x- bullet.x<wall.width/2+bullet.width/2
+  if(object1.x- object2.x<object1.width/2+object2.width/2
     ){
-     
-     bullet.velocityX = 0;
-  
-     if(damage>10){
-      bullet.shapeColor="red";
-    }    
-    if(damage<10){
-      bullet.shapeColor="green";
-    }
-  
-    
+     return true
   }
-
+else{
+  return false
+}
 }
 
 
